@@ -14,41 +14,46 @@ const char *version_num = "1.6";
 /*START GAME PROMPTS*/
 
 // LOGO & Data screen - version, group name etc
-screen.printf("Team");
-screen.locate(0,1);
-screen.printf("Kombat       Ltd");
-thread_sleep_for(1000);
-/*
+thread_sleep_for(100); // wake up time for LCD CRUCIAL
+
 screen.cls();
+
+screen.printf("Team");                      //prompt #1
+screen.locate(0,1);                         //[Team            ]
+screen.printf("Kombat       Ltd");          //[Kombat       Ltd]
+
 thread_sleep_for(1000);
+screen.cls();
+thread_sleep_for(100);
 
-screen.printf("Version");
-screen.locate(0,1);
-screen.printf("V.%s",version_num);
+screen.printf("Version");                   //prompt #2
+screen.locate(0,1);                         //[Version         ]
+screen.printf("V:%s",version_num);          //[V.#.#           ]
+
 thread_sleep_for(1000);
+screen.cls();
+thread_sleep_for(100);
 
-screen.locate(4,0);
-screen.printf("KOMBAT");
-screen.locate(4,1);
-screen.printf("BOX!");
-*/
+screen.locate(5,0);
+screen.printf("KOMBAT");                    //prompt #3
+screen.locate(5,1);                         //[     KOMBAT     ]
+screen.printf("BOX!");                      //[     BOX!       ]
 
+thread_sleep_for(1000); // notice no clear
 
 // Any button to start
 
-/* screen.writeCustomChar(0x40, button_on);
-screen.writeCustomChar(0x41, button_off);
-while(OR_button_on() == 0){
-screen.locate(10,1);
-screen.printf("%s",button_off);
-thread_sleep_for(500);
-screen.locate(10,1);
-screen.printf("%s",button_on);
-thread_sleep_for(500);
+screen.setCustomChar(0, button_on);
+screen.setCustomChar(1, button_off);
+while(OR_button_on() == 0) {                //prompt #3 continued:
+    screen.locate(10,1);                    //[     KOMBAT     ]
+    screen.writeCustomChar(0);              //[     BOX!  o    ]alton
+    thread_sleep_for(500);                  //[     BOX!  O    ]altoff
+    screen.locate(10,1);
+    screen.writeCustomChar(1);
+    thread_sleep_for(500);
 }
 screen.cls();
-*/
-
 
 
 /* Initialising screen

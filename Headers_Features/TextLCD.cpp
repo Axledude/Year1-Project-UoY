@@ -160,8 +160,6 @@ int TextLCD::rows() {
   }
 }
 
-
-
 /*---------------------------------------------Manually Deved---------------------------------------------------*/
 
 /** Asign a CGRam slot and given charater to asign with it
@@ -169,10 +167,18 @@ int TextLCD::rows() {
   * @param _ramAddress Ram slot format - 0x40,0x41,0x42,0x43,0x44,0x45,0x46,0x47
   * @param _bitarray premade byte configurations of custom characters
   */
-void TextLCD::writeCustomChar(int _ramAddress, const byte _bitarray[]) {
-    writeCommand(_ramAddress); /*Needs looking at - the command != ramregister adress*/
+void TextLCD::setCustomChar(int slot, const byte _bitarray[]) {
+    
+    slot &= 0x7; // slot number
+    writeCommand(0x40 | (slot << 3));
     for (int i = 0; i < 8; i++)
     {
         writeData(_bitarray[i]);
     }
+    writeCommand(0x80);
+
+}
+
+void TextLCD::writeCustomChar(int slot) {
+    _putc(slot);
 }

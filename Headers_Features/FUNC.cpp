@@ -10,8 +10,8 @@ Profiles
     slot2("Chris",0,3),
     slot3("Jen",0,3),
     slot4("Lucy",0,3);
-TextLCD screen(D0, D1, D4, D5, D6, D7, TextLCD::LCD16x2);
-InterruptIn butt_A(D8), butt_B(D9), butt_C(D10), butt_D(D11);
+TextLCD screen(D8, D9, D4, D5, D6, D7, TextLCD::LCD16x2);
+InterruptIn butt_A(D10), butt_B(D11), butt_C(D12), butt_D(D13);
 bool butt_state_A, butt_state_B, butt_state_C, butt_state_D;
 
 /*------------------------------------------Functions to be declared----------------------------------------------*/

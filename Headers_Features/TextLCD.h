@@ -90,21 +90,21 @@ public:
 
     /** Clear the screen and locate to 0,0 */
     void cls();
+    
     int rows();
     int columns();
-    void writeCustomChar(int _ramregister, const byte _bitarray[]);
-
-protected:
-    
+    void writeByte(int value);
+    void setCustomChar(int slot, const byte _bitarray[]);
     // Stream implementation functions
     virtual int _putc(int value);
     virtual int _getc();
-
+    void writeCustomChar(int _register);
     int address(int column, int row);
     void character(int column, int row, int c);
-    void writeByte(int value);
     void writeCommand(int command);
     void writeData(int data);
+
+protected:
 
     DigitalOut _rs, _e;
     BusOut _d;
